@@ -8,7 +8,9 @@
 *.sdf
 *.opensdf
 .vs
-Debug/
+*.tlog
+*.idb
+#Debug/
 
 # Precompiled Headers
 *.gch
