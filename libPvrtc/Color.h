@@ -2,7 +2,7 @@
 
 namespace LIBPvrtc
 {
-	typedef char ColorType;
+	typedef unsigned char ColorType;
 
 	//	Base color
 	struct ColorRGB
