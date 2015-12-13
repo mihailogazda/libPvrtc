@@ -8,7 +8,7 @@ namespace libpvrtc
 	{
 	public:
 
-		bool Load(const char* fileName, Image& image);
+		bool Load(const char* fileName, Image* &image);
 
 	};
 }

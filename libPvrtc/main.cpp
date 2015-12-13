@@ -18,24 +18,25 @@ using namespace libpvrtc;
 
 int main(int argc, const char * argv[]) 
 {
-	ImageRGB image;
+	Image* image = NULL;
 
 	ImageLoader loader;
-	loader.Load("test.png", image);
+	if (!loader.Load("test.png", image))
+	{
+		std::cout << "Cannot load input image" << std::endl;
+		return 0;
+	}
 
-
-	//	Create image
-	ImageRGB* rgb128 = new ImageRGB(128, 128);
 	PVRTCEncoder encoder;
 	PVRTCFileWriter writer;
 
 	ColorType* encodedData = NULL;
-	encoder.Encode(rgb128, encodedData);
+	encoder.Encode(image, encodedData);
 
-	writer.Write("test.pvr", encodedData, rgb128->Width(), rgb128->Height(), rgb128->HasAlpha());
+	writer.Write("test.pvr", encodedData, image->Width(), image->Height(), image->HasAlpha());
 
 	delete[] encodedData;
-	delete rgb128;
+	delete image;
 
     return 0;
 }
