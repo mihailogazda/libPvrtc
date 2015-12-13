@@ -1,5 +1,7 @@
 #pragma once
 #include <stdio.h>
+#include <stdlib.h>
+#include <memory>
 #include "Color.h"
 
 namespace libpvrtc
@@ -38,6 +40,11 @@ namespace libpvrtc
 		{
 			m_pixels = new ColorRGB[m_width * m_height];
 		}
+		ImageRGB(int width, int height, const ColorRGB* pixels) : Image(width, height)
+		{
+			m_pixels = new ColorRGB[m_width * m_height];
+			memcpy(m_pixels, pixels, m_width * m_height * sizeof(ColorRGB));
+		}
 		~ImageRGB()
 		{
 			delete[] m_pixels;
@@ -69,6 +76,11 @@ namespace libpvrtc
 		ImageRGBA(int width, int height) : Image(width, height), m_pixels(NULL)
 		{
 			m_pixels = new ColorRGBA[m_width * m_height];
+		}
+		ImageRGBA(int width, int height, const ColorRGBA* pixels) : Image(width, height)
+		{
+			m_pixels = new ColorRGBA[m_width * m_height];
+			memcpy(m_pixels, pixels, m_width * m_height * sizeof(ColorRGBA));
 		}
 		~ImageRGBA()
 		{

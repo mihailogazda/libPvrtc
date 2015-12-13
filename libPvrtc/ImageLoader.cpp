@@ -16,13 +16,11 @@ namespace libpvrtc
 		{
 			if (hasAlpha)
 			{
-				image = new ImageRGBA(width, height);
-				image->SetPixels((ColorRGBA*) pixels);
+				image = new ImageRGBA(width, height, (const ColorRGBA*) pixels);
 			}
 			else
 			{
-				image = new ImageRGB(width, height);
-				image->SetPixels((ColorRGB*)pixels);
+				image = new ImageRGB(width, height, (const ColorRGB*) pixels);
 			}
 			return true;
 		}
