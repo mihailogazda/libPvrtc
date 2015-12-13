@@ -1,6 +1,6 @@
 #pragma once
 
-namespace LIBPvrtc
+namespace libpvrtc
 {
 	typedef unsigned char ColorType;
 

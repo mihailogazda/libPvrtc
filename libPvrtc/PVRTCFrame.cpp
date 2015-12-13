@@ -1,6 +1,6 @@
 #include "PVRTCFrame.h"
 
-namespace LIBPvrtc
+namespace libpvrtc
 {
 	void PVRTCFrame::SetColorA(const ColorRGB& color)
 	{

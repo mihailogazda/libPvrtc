@@ -7,65 +7,28 @@
 //
 
 #include <iostream>
-#include "PVRTextureHeader.h"
-#include "PVRTexture.h"
 #include "Color.h"
 #include "PVRTCFrame.h"
+#include "Image.h"
+#include "PVRTCEncoder.h"
+#include "PVRTCFileWriter.h"
 
-using namespace LIBPvrtc;
+using namespace libpvrtc;
 
-void WritePVRTC(const char* filename, const unsigned char* pvrtc, int width, int height, bool hasAlpha = false)
+int main(int argc, const char * argv[]) 
 {
-    //	PVRTc
-    pvrtexture::CPVRTextureHeader pvrTexHdr;
-    pvrTexHdr.setPixelFormat(hasAlpha ? EPVRTPixelFormat::ePVRTPF_PVRTCI_4bpp_RGBA : EPVRTPixelFormat::ePVRTPF_PVRTCI_4bpp_RGB);
-    pvrTexHdr.setWidth(width);
-    pvrTexHdr.setHeight(height);
-    pvrTexHdr.setIsFileCompressed(false);
-    pvrTexHdr.setColourSpace(ePVRTCSpacelRGB);
-    pvrTexHdr.setIsPreMultiplied(false);
-    pvrTexHdr.setNumMIPLevels(1);
-    pvrTexHdr.setOrientation(ePVRTOrientUp);
-    pvrTexHdr.setChannelType(ePVRTVarTypeUnsignedByte);
-    //pvrTexHdr.setDepth(4);
-    
-    pvrtexture::CPVRTexture pTexture(pvrTexHdr, pvrtc);
-    pTexture.saveFile(filename);
-}
+	//	Create image
+	ImageRGB* rgb128 = new ImageRGB(128, 128);
+	PVRTCEncoder encoder;
+	PVRTCFileWriter writer;
 
-void CreateImageRGB(int w, int h)
-{
-    int blockPixelCount = 16;
-    int blockCount = w * h / blockPixelCount;
-    int blockMemorySize = sizeof(PVRTCFrame);
-    int pixelsSize = blockMemorySize * blockCount;
+	ColorType* encodedData = NULL;
+	encoder.Encode(rgb128, encodedData);
 
-	PVRTCFrame_RGB frame;
-	PVRTCFrame_RGB* frames = new PVRTCFrame_RGB[pixelsSize];
+	writer.Write("test.pvr", encodedData, rgb128->Width(), rgb128->Height(), rgb128->HasAlpha());
 
-	for (int i = 0; i < blockCount; ++i)
-	{
-		ColorRGB color;
-		color.B = 0;
-		color.R = 0;
-		color.G = 255;
+	delete[] encodedData;
+	delete rgb128;
 
-		frame.SetColorA(color);
-		frame.SetColorB(color);
-
-		frames[i] = frame;
-	}
-
-	WritePVRTC("test.pvr", (unsigned char*)frames, w, h, false);
-	delete[] frames;
-}
-
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    
-    CreateImageRGB(64, 64);
-    
-    
-    
     return 0;
 }

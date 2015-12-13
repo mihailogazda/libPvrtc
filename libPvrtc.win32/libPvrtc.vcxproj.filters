@@ -21,12 +21,33 @@
     <ClCompile Include="..\libPvrtc\PVRTCFrame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\libPvrtc\PVRTCEncoder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\libPvrtc\PVRTCFileWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\libPvrtc\Color.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\libPvrtc\PVRTCFrame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libPvrtc\Image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libPvrtc\IEncoder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libPvrtc\PVRTCEncoder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libPvrtc\IFileWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libPvrtc\PVRTCFileWriter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

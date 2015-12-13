@@ -124,10 +124,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\libPvrtc\main.cpp" />
+    <ClCompile Include="..\libPvrtc\PVRTCEncoder.cpp" />
+    <ClCompile Include="..\libPvrtc\PVRTCFileWriter.cpp" />
     <ClCompile Include="..\libPvrtc\PVRTCFrame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\libPvrtc\Color.h" />
+    <ClInclude Include="..\libPvrtc\IEncoder.h" />
+    <ClInclude Include="..\libPvrtc\IFileWriter.h" />
+    <ClInclude Include="..\libPvrtc\Image.h" />
+    <ClInclude Include="..\libPvrtc\PVRTCEncoder.h" />
+    <ClInclude Include="..\libPvrtc\PVRTCFileWriter.h" />
     <ClInclude Include="..\libPvrtc\PVRTCFrame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,7 +1,7 @@
 #pragma once
 #include "Color.h"
 
-namespace LIBPvrtc
+namespace libpvrtc
 {
 	//  RGB format: [1] -> mode (keep 0), [32bit] modulation
 	//  [1|R5|G5|B5] [1|R5|G5|B4][1mode][32modulation]
