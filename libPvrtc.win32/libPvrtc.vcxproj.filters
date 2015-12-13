@@ -45,6 +45,9 @@
     <ClCompile Include="..\libPvrtc\PNGFileWriter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\libPvrtc\Image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\libPvrtc\Color.h">

@@ -10,19 +10,19 @@ namespace libpvrtc
 	{
 	public:
 
-		Image() : m_width(0), m_height(0) {}
-		Image(int width, int height) : m_width(width), m_height(height) {}
+		Image();
+		Image(int width, int height);
 
 		virtual bool HasAlpha() const = 0;
 
 		virtual Color* Pixels() const = 0;
 		virtual void SetPixels(const Color* pixels) = 0;
 
-		virtual int Width() const { return m_width; }
-		virtual void SetWidth(int w) { m_width = w; }
+		virtual int Width() const;
+		virtual void SetWidth(int w);
 
-		virtual int Height() const { return m_height; }
-		virtual void SetHeight(int h) { m_height = h; }
+		virtual int Height() const;
+		virtual void SetHeight(int h);
 
 	protected:
 
@@ -35,32 +35,17 @@ namespace libpvrtc
 	{
 	public:
 
-		ImageRGB() : Image(), m_pixels(NULL) {}
-		ImageRGB(int width, int height) : Image(width, height), m_pixels(NULL)
-		{
-			m_pixels = new ColorRGB[m_width * m_height];
-		}
-		ImageRGB(int width, int height, const ColorRGB* pixels) : Image(width, height)
-		{
-			m_pixels = new ColorRGB[m_width * m_height];
-			memcpy(m_pixels, pixels, m_width * m_height * sizeof(ColorRGB));
-		}
-		~ImageRGB()
-		{
-			delete[] m_pixels;
-		}
+		ImageRGB();
+		ImageRGB(int width, int height);
+		ImageRGB(int width, int height, const ColorRGB* pixels);
+		~ImageRGB();
 
-		virtual Color* Pixels() const override
-		{
-			return m_pixels;
-		}
+		virtual Color* Pixels() const override;
+		virtual void SetPixels(const Color* pixels) override;
+		virtual bool HasAlpha() const override;
 
-		virtual void SetPixels(const Color* pixels) override
-		{
-			m_pixels = (ColorRGB*)(pixels);
-		}
-
-		virtual bool HasAlpha() const override { return false; }
+		void SetPixel(const ColorRGB& color, int x, int y);
+		ColorRGB GetPixel(int x, int y);
 
 	private:
 
@@ -72,33 +57,17 @@ namespace libpvrtc
 	{
 	public:
 
-		ImageRGBA() : Image(), m_pixels(NULL) {}
-		ImageRGBA(int width, int height) : Image(width, height), m_pixels(NULL)
-		{
-			m_pixels = new ColorRGBA[m_width * m_height];
-		}
-		ImageRGBA(int width, int height, const ColorRGBA* pixels) : Image(width, height)
-		{
-			m_pixels = new ColorRGBA[m_width * m_height];
-			memcpy(m_pixels, pixels, m_width * m_height * sizeof(ColorRGBA));
-		}
-		~ImageRGBA()
-		{
-			delete[] m_pixels;
-		}
+		ImageRGBA();
+		ImageRGBA(int width, int height);
+		ImageRGBA(int width, int height, const ColorRGBA* pixels);
+		~ImageRGBA();
 
-		virtual Color* Pixels() const override
-		{
-			return m_pixels;
-		}
+		virtual Color* Pixels() const override;
+		virtual void SetPixels(const Color* pixels) override;
+		virtual bool HasAlpha() const override;
 
-		virtual void SetPixels(const Color* pixels) override
-		{
-			delete[] m_pixels;
-			m_pixels = (ColorRGBA*)(pixels);
-		}
-
-		virtual bool HasAlpha() const override { return true; }
+		void SetPixel(const ColorRGBA& color, int x, int y);
+		ColorRGBA GetPixel(int x, int y);
 
 	private:
 
