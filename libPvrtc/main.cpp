@@ -8,15 +8,22 @@
 
 #include <iostream>
 #include "Color.h"
-#include "PVRTCFrame.h"
 #include "Image.h"
+#include "PVRTCFrame.h"
 #include "PVRTCEncoder.h"
 #include "PVRTCFileWriter.h"
+#include "ImageLoader.h"
 
 using namespace libpvrtc;
 
 int main(int argc, const char * argv[]) 
 {
+	ImageRGB image;
+
+	ImageLoader loader;
+	loader.Load("test.png", image);
+
+
 	//	Create image
 	ImageRGB* rgb128 = new ImageRGB(128, 128);
 	PVRTCEncoder encoder;

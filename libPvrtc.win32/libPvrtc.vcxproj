@@ -123,14 +123,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\libPvrtc\ImageLoader.cpp" />
     <ClCompile Include="..\libPvrtc\main.cpp" />
+    <ClCompile Include="..\libPvrtc\PNGFileReader.cpp" />
     <ClCompile Include="..\libPvrtc\PVRTCEncoder.cpp" />
     <ClCompile Include="..\libPvrtc\PVRTCFileWriter.cpp" />
     <ClCompile Include="..\libPvrtc\PVRTCFrame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\libPvrtc\Color.h" />
+    <ClInclude Include="..\libPvrtc\ImageLoader.h" />
+    <ClInclude Include="..\libPvrtc\PNGFileReader.h" />
     <ClInclude Include="..\libPvrtc\IEncoder.h" />
+    <ClInclude Include="..\libPvrtc\IFileReader.h" />
     <ClInclude Include="..\libPvrtc\IFileWriter.h" />
     <ClInclude Include="..\libPvrtc\Image.h" />
     <ClInclude Include="..\libPvrtc\PVRTCEncoder.h" />
