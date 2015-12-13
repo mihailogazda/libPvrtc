@@ -39,3 +39,6 @@ Build/
 build/
 *.xcworkspace
 *xcuserdata*
+
+# other
+*test.pvr
