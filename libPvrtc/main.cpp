@@ -17,19 +17,26 @@
 
 using namespace libpvrtc;
 
+
 int main(int argc, const char * argv[]) 
 {
+	const char* imageName = "test.png";
 	Image* image = NULL;
 
+	if (argc > 1)
+	{
+		imageName = argv[1];
+	}
+
 	ImageLoader loader;
-	if (!loader.Load("test.png", image))
+	if (!loader.Load(imageName, image))
 	{
 		std::cout << "Cannot load input image" << std::endl;
 		return 0;
 	}
 
 	//	Write back
-	PNGFileWriter pngWriter;
+	/*PNGFileWriter pngWriter;
 	pngWriter.Write("test-out.png", (const ColorType*) image->Pixels(), image->Width(), image->Height(), image->HasAlpha());
 
 	ImageRGB* rgb = new ImageRGB(image->Width(), image->Height());
@@ -42,6 +49,8 @@ int main(int argc, const char * argv[])
 	}
 
 	pngWriter.Write("test-out-copy.png", (const ColorType*) rgb->Pixels(), rgb->Width(), rgb->Height(), false);
+	*/
+
 
 	PVRTCEncoder encoder;
 	PVRTCFileWriter writer;

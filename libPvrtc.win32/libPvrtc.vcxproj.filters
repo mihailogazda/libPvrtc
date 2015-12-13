@@ -51,6 +51,9 @@
     <ClCompile Include="..\libPvrtc\MortonLUT.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\libPvrtc\BitScaleLUT.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\libPvrtc\Color.h">
@@ -90,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\libPvrtc\MortonLUT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libPvrtc\BitScaleLUT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

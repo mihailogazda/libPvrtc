@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\external\LodePNG\lodepng.cpp" />
+    <ClCompile Include="..\libPvrtc\BitScaleLUT.cpp" />
     <ClCompile Include="..\libPvrtc\Image.cpp" />
     <ClCompile Include="..\libPvrtc\ImageLoader.cpp" />
     <ClCompile Include="..\libPvrtc\main.cpp" />
@@ -136,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\external\LodePNG\lodepng.h" />
+    <ClInclude Include="..\libPvrtc\BitScaleLUT.h" />
     <ClInclude Include="..\libPvrtc\Color.h" />
     <ClInclude Include="..\libPvrtc\ImageLoader.h" />
     <ClInclude Include="..\libPvrtc\MortonLUT.h" />
