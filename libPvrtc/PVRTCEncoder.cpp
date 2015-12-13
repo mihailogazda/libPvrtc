@@ -30,7 +30,6 @@ namespace libpvrtc
 	bool PVRTCEncoder::EncodeRGB(const Image* image, ColorType* &encodedData)
 	{
 		int blockCount = (image->Width() * image->Height()) / PVRTC_PIXELS_PER_BLOCK;
-		PVRTCFrame_RGB frame;
 		PVRTCFrame_RGB* frames = new PVRTCFrame_RGB[blockCount];
 
 		ImageRGB* img = (ImageRGB*)image;
@@ -45,7 +44,6 @@ namespace libpvrtc
 				fr->SetColorA(color);
 				fr->SetColorB(color);
 				fr->UsePunchtroughAlpha = 0;
-				//fr->ModulationData = 0xFF00FF00;
 				fr->ModulationData = 0xFFFFFFFF;
 			}
 		}
@@ -57,22 +55,21 @@ namespace libpvrtc
 	bool PVRTCEncoder::EncodeRGBA(const Image* image, ColorType* &encodedData)
 	{
 		int blockCount = (image->Width() * image->Height()) / PVRTC_PIXELS_PER_BLOCK;
-
-		PVRTCFrame_RGBA frame;
 		PVRTCFrame_RGBA* frames = new PVRTCFrame_RGBA[blockCount];
+		ImageRGBA* img = (ImageRGBA*)image;
 
-		for (int i = 0; i < blockCount; ++i)
+		for (int i = 0; i < image->Width() / 4; ++i)
 		{
-			ColorRGBA color;
-			color.B = 255;
-			color.R = 0;
-			color.G = 0;
-			color.A = 0;
+			for (int j = 0; j < image->Height() / 4; ++j)
+			{
+				PVRTCFrame_RGBA* fr = frames + MortonLUT::GetMortonNumber(i, j);
+				ColorRGBA color = img->GetPixel(i * 4, j * 4);
 
-			frame.SetColorA(color);
-			frame.SetColorB(color);
-
-			frames[i] = frame;
+				fr->SetColorA(color);
+				fr->SetColorB(color);
+				fr->UsePunchtroughAlpha = 0;
+				fr->ModulationData = 0xFFFFFFFF;
+			}
 		}
 
 		encodedData = (ColorType*)(frames);

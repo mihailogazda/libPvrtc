@@ -99,13 +99,13 @@ namespace libpvrtc
 
 	bool ImageRGBA::HasAlpha() const { return true; }
 
-	inline void ImageRGBA::SetPixel(const ColorRGBA & color, int x, int y) 
+	void ImageRGBA::SetPixel(const ColorRGBA & color, int x, int y) 
 	{
 		unsigned int index = x + m_width * y;
 		m_pixels[index] = color;
 	}
 
-	inline ColorRGBA ImageRGBA::GetPixel(int x, int y)
+	ColorRGBA ImageRGBA::GetPixel(int x, int y)
 	{
 		unsigned int index = x + m_width * y;
 		return m_pixels[index];
