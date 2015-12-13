@@ -32,6 +32,17 @@ int main(int argc, const char * argv[])
 	PNGFileWriter pngWriter;
 	pngWriter.Write("test-out.png", (const ColorType*) image->Pixels(), image->Width(), image->Height(), image->HasAlpha());
 
+	ImageRGB* rgb = new ImageRGB(image->Width(), image->Height());
+	for (int i = 0; i < image->Width(); ++i)
+	{
+		for (int j = 0; j < image->Height(); ++j)
+		{
+			rgb->SetPixel(((ImageRGB*)image)->GetPixel(i, j), i, j);
+		}
+	}
+
+	pngWriter.Write("test-out-copy.png", (const ColorType*) rgb->Pixels(), rgb->Width(), rgb->Height(), false);
+
 	PVRTCEncoder encoder;
 	PVRTCFileWriter writer;
 

@@ -1,5 +1,6 @@
 #include "PVRTCEncoder.h"
 #include "PVRTCFrame.h"
+#include "MortonLUT.h"
 
 namespace libpvrtc
 {
@@ -32,17 +33,21 @@ namespace libpvrtc
 		PVRTCFrame_RGB frame;
 		PVRTCFrame_RGB* frames = new PVRTCFrame_RGB[blockCount];
 
-		for (int i = 0; i < blockCount; ++i)
+		ImageRGB* img = (ImageRGB*)image;
+
+		for (int i = 0; i < image->Width() / 4; ++i)
 		{
-			ColorRGB color;
-			color.B = 255;
-			color.R = 0;
-			color.G = 0;
+			for (int j = 0; j < image->Height() / 4; ++j)
+			{
+				PVRTCFrame_RGB* fr = frames + MortonLUT::GetMortonNumber(i, j);
+				ColorRGB color = img->GetPixel(i * 4, j * 4);
 
-			frame.SetColorA(color);
-			frame.SetColorB(color);
-
-			frames[i] = frame;
+				fr->SetColorA(color);
+				fr->SetColorB(color);
+				fr->UsePunchtroughAlpha = 0;
+				//fr->ModulationData = 0xFF00FF00;
+				fr->ModulationData = 0xFFFFFFFF;
+			}
 		}
 
 		encodedData = (ColorType*)(frames);

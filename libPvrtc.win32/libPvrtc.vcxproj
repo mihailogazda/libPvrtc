@@ -127,6 +127,7 @@
     <ClCompile Include="..\libPvrtc\Image.cpp" />
     <ClCompile Include="..\libPvrtc\ImageLoader.cpp" />
     <ClCompile Include="..\libPvrtc\main.cpp" />
+    <ClCompile Include="..\libPvrtc\MortonLUT.cpp" />
     <ClCompile Include="..\libPvrtc\PNGFileReader.cpp" />
     <ClCompile Include="..\libPvrtc\PNGFileWriter.cpp" />
     <ClCompile Include="..\libPvrtc\PVRTCEncoder.cpp" />
@@ -137,6 +138,7 @@
     <ClInclude Include="..\external\LodePNG\lodepng.h" />
     <ClInclude Include="..\libPvrtc\Color.h" />
     <ClInclude Include="..\libPvrtc\ImageLoader.h" />
+    <ClInclude Include="..\libPvrtc\MortonLUT.h" />
     <ClInclude Include="..\libPvrtc\PNGFileReader.h" />
     <ClInclude Include="..\libPvrtc\IEncoder.h" />
     <ClInclude Include="..\libPvrtc\IFileReader.h" />

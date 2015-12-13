@@ -48,6 +48,9 @@
     <ClCompile Include="..\libPvrtc\Image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\libPvrtc\MortonLUT.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\libPvrtc\Color.h">
@@ -84,6 +87,9 @@
       <Filter>Header Files\external</Filter>
     </ClInclude>
     <ClInclude Include="..\libPvrtc\PNGFileWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\libPvrtc\MortonLUT.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

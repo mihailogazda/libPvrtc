@@ -15,8 +15,8 @@ namespace libpvrtc
 		pvrTexHdr.setColourSpace(ePVRTCSpacelRGB);
 		pvrTexHdr.setIsPreMultiplied(false);
 		pvrTexHdr.setNumMIPLevels(1);
-		pvrTexHdr.setOrientation(ePVRTOrientUp);
-		pvrTexHdr.setChannelType(ePVRTVarTypeUnsignedByte);
+		//pvrTexHdr.setOrientation(ePVRTOrientUp);
+		//pvrTexHdr.setChannelType(ePVRTVarTypeUnsignedByte);
 		//pvrTexHdr.setDepth(4);
 
 		pvrtexture::CPVRTexture pTexture(pvrTexHdr, pixelData);
