@@ -76,7 +76,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../external/imagination/Include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../external/imagination/Include/;../external/LodePNG/</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\external\LodePNG\lodepng.cpp" />
     <ClCompile Include="..\libPvrtc\ImageLoader.cpp" />
     <ClCompile Include="..\libPvrtc\main.cpp" />
     <ClCompile Include="..\libPvrtc\PNGFileReader.cpp" />
@@ -131,6 +132,7 @@
     <ClCompile Include="..\libPvrtc\PVRTCFrame.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\external\LodePNG\lodepng.h" />
     <ClInclude Include="..\libPvrtc\Color.h" />
     <ClInclude Include="..\libPvrtc\ImageLoader.h" />
     <ClInclude Include="..\libPvrtc\PNGFileReader.h" />

@@ -1,4 +1,5 @@
 #include "PNGFileReader.h"
+#include "lodepng.h"
 
 namespace libpvrtc
 {

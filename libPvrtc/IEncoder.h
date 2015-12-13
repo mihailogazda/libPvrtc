@@ -8,11 +8,7 @@ namespace libpvrtc
 	class IEncoder
 	{
 	public:
-		//	Encode RGB data. Free encodedPixels after done.
-		virtual bool Encode(const ImageRGB* image, ColorType* &encodedPixels) = 0;
-
-		//	Encode RGBA data. Free encodedPixels after done.
-		virtual bool Encode(const ImageRGBA* image, ColorType* &encodedPixels) = 0;
-
+		//	Encode RGB or RGBA data. Free encodedPixels after done.
+		virtual bool Encode(const Image* image, ColorType* &encodedPixels) = 0;
 	};
 }

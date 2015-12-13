@@ -7,9 +7,11 @@ namespace libpvrtc
 	{
 	public:
 
-		virtual bool Encode(const ImageRGB* image, ColorType* &encodedData) override;
+		virtual bool Encode(const Image* image, ColorType* &encodedData) override;
 
-		virtual bool Encode(const ImageRGBA* image, ColorType* &encodedData) override;
+	private:
 
+		bool EncodeRGB(const Image* image, ColorType* &encodedData);
+		bool EncodeRGBA(const Image* image, ColorType* &encodedData);
 	};
 }

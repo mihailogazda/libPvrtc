@@ -4,8 +4,12 @@ namespace libpvrtc
 {
 	typedef unsigned char ColorType;
 
+	struct Color
+	{
+	};
+
 	//	Base color
-	struct ColorRGB
+	struct ColorRGB : Color
 	{
 		ColorType R;
 		ColorType G;

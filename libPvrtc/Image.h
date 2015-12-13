@@ -1,95 +1,95 @@
 #pragma once
+#include <stdio.h>
 #include "Color.h"
 
 namespace libpvrtc
 {
-	//	Generic image representation
-	//	Reserves memory when initialized with dimensions
-	template<typename PixelType>
 	class Image
 	{
 	public:
 
-		Image() : m_pixels(NULL), m_width(0), m_height(0)
-		{
-		}
+		Image() : m_width(0), m_height(0) {}
+		Image(int width, int height) : m_width(width), m_height(height) {}
 
-		Image(int width, int height)
-		{
-			m_width = width;
-			m_height = height;
-			m_pixels = new PixelType[width * height];
-		}
+		virtual bool HasAlpha() const = 0;
 
-		Image(const Image& reference)
-		{
-			CopyPixels(reference);
-		}
+		virtual Color* Pixels() const = 0;
+		virtual void SetPixels(const Color* pixels) = 0;
 
-		Image(const Image* pointer)
-		{
-			if (pointer != NULL)
-				CopyPixels(*pointer);
-		}
+		virtual int Width() const { return m_width; }
+		virtual void SetWidth(int w) { m_width = w; }
 
-		Image<PixelType>& operator= (const Image<PixelType>& reference)
-		{
-			CopyPixels(reference);
-			return *this;
-		}
+		virtual int Height() const { return m_height; }
+		virtual void SetHeight(int h) { m_height = h; }
 
-		Image<PixelType>& operator= (const Image<PixelType>* pointer)
-		{
-			if (pointer != NULL)
-				CopyPixels(*pointer);
-			return this;
-		}
-
-		~Image()
-		{
-			delete[] m_pixels;
-		}
-
-		void SetPixels(const PixelType* pixels)
-		{
-			delete[] m_pixels;
-			m_pixels = pixels;
-		}
-
-		const PixelType* GetPixels() const { return m_pixels; }
-
-		PixelType ColorAt(int x, int h) const
-		{
-			return m_pixels[x * h];
-		}
-
-		void SetColor(int x, int y, PixelType color)
-		{
-			m_pixels[x * y] = color;
-		}
-
-		int Width() const { return m_width; }
-		int Height() const { return m_height; }
-
-		virtual bool HasAlpha() const { return sizeof(PixelType) == sizeof(ColorRGBA); };
-
-	private:
-
-		void CopyPixels(const Image& reference)
-		{
-			delete[] m_pixels;
-			m_width = reference.Width();
-			m_height = reference.Height();
-			m_pixels = new PixelType[m_width * m_height];
-			memcpy(m_pixels, reference.GetPixels(), m_width * m_height * sizeof(PixelType));
-		}
-
-		PixelType* m_pixels;
+	protected:
 
 		int m_width;
 		int m_height;
+
 	};
 
-	typedef Image<ColorRGB> ImageRGB;
-	typedef Image<ColorRGBA> ImageRGBA;
+	class ImageRGB : public Image
+	{
+	public:
+
+		ImageRGB() : Image(), m_pixels(NULL) {}
+		ImageRGB(int width, int height) : Image(width, height), m_pixels(NULL)
+		{
+			m_pixels = new ColorRGB[m_width * m_height];
+		}
+		~ImageRGB()
+		{
+			delete[] m_pixels;
+		}
+
+		virtual Color* Pixels() const override
+		{
+			return m_pixels;
+		}
+
+		virtual void SetPixels(const Color* pixels) override
+		{
+			m_pixels = (ColorRGB*)(pixels);
+		}
+
+		virtual bool HasAlpha() const override { return false; }
+
+	private:
+
+		ColorRGB* m_pixels;
+
+	};
+
+	class ImageRGBA : public Image
+	{
+	public:
+
+		ImageRGBA() : Image(), m_pixels(NULL) {}
+		ImageRGBA(int width, int height) : Image(width, height), m_pixels(NULL)
+		{
+			m_pixels = new ColorRGBA[m_width * m_height];
+		}
+		~ImageRGBA()
+		{
+			delete[] m_pixels;
+		}
+
+		virtual Color* Pixels() const override
+		{
+			return m_pixels;
+		}
+
+		virtual void SetPixels(const Color* pixels) override
+		{
+			delete[] m_pixels;
+			m_pixels = (ColorRGBA*)(pixels);
+		}
+
+		virtual bool HasAlpha() const override { return true; }
+
+	private:
+
+		ColorRGBA* m_pixels;
+	};
 }
