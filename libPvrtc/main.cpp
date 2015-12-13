@@ -13,6 +13,7 @@
 #include "PVRTCEncoder.h"
 #include "PVRTCFileWriter.h"
 #include "ImageLoader.h"
+#include "PNGFileWriter.h"
 
 using namespace libpvrtc;
 
@@ -26,6 +27,10 @@ int main(int argc, const char * argv[])
 		std::cout << "Cannot load input image" << std::endl;
 		return 0;
 	}
+
+	//	Write back
+	PNGFileWriter pngWriter;
+	pngWriter.Write("test-out.png", (const ColorType*) image->Pixels(), image->Width(), image->Height(), image->HasAlpha());
 
 	PVRTCEncoder encoder;
 	PVRTCFileWriter writer;

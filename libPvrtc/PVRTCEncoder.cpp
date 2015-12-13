@@ -62,7 +62,7 @@ namespace libpvrtc
 			color.B = 255;
 			color.R = 0;
 			color.G = 0;
-			color.A = 128;
+			color.A = 0;
 
 			frame.SetColorA(color);
 			frame.SetColorB(color);

@@ -16,7 +16,7 @@ namespace libpvrtc
 		int r = color.R;
 		int g = color.G;
 		int b = color.B;
-		ColorB = r << 9 | g << 4 | b;
+		ColorB = r << 10 | g << 5 | b;
 		ColorBIsOpaque = true;
 	}
 
@@ -26,7 +26,7 @@ namespace libpvrtc
 		int b = color.B;
 		int r = color.R;
 		int g = color.G;
-		ColorA = a << 12 | r << 8 | g << 4 | b;
+		ColorA = a << 11 | r << 7 | g << 3 | b;
 		ColorAIsOpaque = false;
 	}
 
