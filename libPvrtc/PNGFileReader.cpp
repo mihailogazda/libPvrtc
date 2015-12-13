@@ -26,9 +26,23 @@ namespace libpvrtc
 				height = h;
 				hasAlpha = state.info_png.color.colortype == LodePNGColorType::LCT_RGBA;
 
-				pixelData = new ColorType[colorData.size()];
-				memcpy(pixelData, &colorData[0], colorData.size());
-				//std::copy(rawData.begin(), rawData.end(), (const unsigned char*) pixelData);
+				if (hasAlpha)
+				{
+					pixelData = new ColorType[colorData.size()];
+					memcpy(pixelData, &colorData[0], colorData.size());
+				}
+				else
+				{
+					//	Lode returns RGBA pixels with A=255 in case of RGB
+					//	So we need to repack the pixels
+					pixelData = new ColorType[w * h * sizeof(ColorRGB)];
+					for (unsigned i = 0, j = 0; i < colorData.size(); i += 4, j += 3)
+					{
+						pixelData[j] = colorData[i];
+						pixelData[j + 1] = colorData[i + 1];
+						pixelData[j + 2] = colorData[i + 2];
+					}
+				}
 
 				return true;
 			}

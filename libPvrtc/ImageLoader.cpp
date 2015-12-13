@@ -6,6 +6,7 @@ namespace libpvrtc
 {
 	bool ImageLoader::Load(const char* fileName, Image* &image)
 	{
+		bool success = false;
 		PNGFileReader pngReader;
 		ColorType* pixels = NULL;
 		int width = 0;
@@ -22,10 +23,12 @@ namespace libpvrtc
 			{
 				image = new ImageRGB(width, height, (const ColorRGB*) pixels);
 			}
-			return true;
+
+			success = true;
 		}
 
-		return false;
+		delete[] pixels;
+		return success;
 	}
 
 
