@@ -177,14 +177,14 @@ struct MetaDataBlock
 		
 	/*!***********************************************************************
 		@fn       		MetaDataBlock
-		@brief      	Meta Data Block Constructor.
+		@brief      	Meta Data Block Constructor
 	*************************************************************************/
 	MetaDataBlock() : DevFOURCC(0), u32Key(0), u32DataSize(0), Data(NULL)
 	{}
 		
 	/*!***********************************************************************
 		@fn       		MetaDataBlock
-		@brief      	Meta Data Block Copy Constructor.
+		@brief      	Meta Data Block Copy Constructor
 	*************************************************************************/
 	MetaDataBlock(const MetaDataBlock& rhs)  : DevFOURCC(rhs.DevFOURCC), u32Key(rhs.u32Key), u32DataSize(rhs.u32DataSize)
 	{
@@ -198,7 +198,7 @@ struct MetaDataBlock
 
 	/*!***********************************************************************
 		@fn       		~MetaDataBlock
-		@brief      	Meta Data Block Destructor.
+		@brief      	Meta Data Block Destructor
 	*************************************************************************/
 	~MetaDataBlock()
 	{
@@ -655,7 +655,7 @@ void PVRTGetFormatMinDims(PVRTuint64 u64PixelFormat, PVRTuint32 &minX, PVRTuint3
  @param[in,out]	NewHeader		New header to output into.
  @param[in,out]	pMetaData		MetaData Map to output into.
  @brief      	Converts a legacy texture header (V1 or V2) to a current 
-				generation header (V3).
+				generation header (V3)
 *************************************************************************/
 void PVRTConvertOldTextureHeaderToV3(const PVR_Texture_Header* LegacyHeader, PVRTextureHeaderV3& NewHeader, CPVRTMap<PVRTuint32, CPVRTMap<PVRTuint32,MetaDataBlock> >* pMetaData);
 
@@ -680,7 +680,7 @@ void PVRTMapLegacyTextureEnumToNewFormat(PVRTPixelType OldFormat, PVRTuint64& ne
  @param[in]		nHeightSrc		Height of source texture
  @param[in] 	nElementSize	Bytes per pixel
  @param[in]		bTwiddled		True if the data is twiddled
- @brief      	Needed by PVRTTextureTile() in the various PVRTTextureAPIs.
+ @brief      	Needed by PVRTTextureTile() in the various PVRTTextureAPIs
 *****************************************************************************/
 void PVRTTextureLoadTiled(
 						  PVRTuint8		* const pDst,
@@ -698,7 +698,7 @@ void PVRTTextureLoadTiled(
  @param[out]	a	Twiddled value
  @param[in]		u	Coordinate axis 0
  @param[in]		v	Coordinate axis 1
- @brief      	Combine a 2D coordinate into a twiddled value.
+ @brief      	Combine a 2D coordinate into a twiddled value
 *****************************************************************************/
 void PVRTTextureTwiddle(unsigned int &a, const unsigned int u, const unsigned int v);
 
