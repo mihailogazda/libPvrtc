@@ -1,6 +1,7 @@
 #include "PVRTCFileWriter.h"
 #include "PVRTextureHeader.h"
 #include "PVRTexture.h"
+#include "PVRTString.h"
 
 namespace libpvrtc
 {
@@ -19,8 +20,11 @@ namespace libpvrtc
 		//pvrTexHdr.setChannelType(ePVRTVarTypeUnsignedByte);
 		//pvrTexHdr.setDepth(4);
 
+		CPVRTString cFileName;
+		cFileName = fileName;
+
 		pvrtexture::CPVRTexture pTexture(pvrTexHdr, pixelData);
-		bool success = pTexture.saveFile(fileName);
+		bool success = pTexture.saveFile(cFileName);
 
 		return success;
 	}
