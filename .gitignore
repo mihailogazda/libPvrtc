@@ -42,3 +42,4 @@ build/
 
 # other
 *test.pvr
+*.pdb
